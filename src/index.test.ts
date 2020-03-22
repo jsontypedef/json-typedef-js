@@ -1,5 +1,10 @@
 import { readFileSync } from "fs";
-import { isSchema, validate, isValidSchema, MaxDepthExceededError } from ".";
+import {
+  isSchema,
+  validate,
+  isValidSchema,
+  MaxDepthExceededError
+} from "./index";
 
 describe("validation", () => {
   it("supports limited depth", () => {
