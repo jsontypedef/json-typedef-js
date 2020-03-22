@@ -425,6 +425,10 @@ interface ValidationConfig {
   maxErrors: number;
 }
 
+export class MaxDepthExceededError extends Error {}
+
+class MaxErrorsReachedError extends Error {}
+
 export interface ValidationError {
   instancePath: string[];
   schemaPath: string[];
@@ -443,7 +447,17 @@ export function validate(
     config: config || { maxDepth: 0, maxErrors: 0 }
   };
 
-  validateWithState(state, schema, instance);
+  try {
+    validateWithState(state, schema, instance);
+  } catch (err) {
+    if (err instanceof MaxErrorsReachedError) {
+      // MaxErrorsReachedError is just a dummy error to abort further
+      // validation. The contents of state.errors are what we need to return.
+    } else {
+      // This is a genuine error. Let's re-throw it.
+      throw err;
+    }
+  }
 
   return state.errors;
 }
@@ -467,6 +481,10 @@ function validateWithState(
   }
 
   if (isRefForm(schema)) {
+    if (state.schemaTokens.length === state.config.maxDepth) {
+      throw new MaxDepthExceededError();
+    }
+
     // The ref form is the only case where we push a new array onto
     // schemaTokens; we maintain a separate stack for each reference.
     state.schemaTokens.push(["definitions", schema.ref]);
@@ -726,4 +744,8 @@ function pushError(state: ValidationState) {
     instancePath: [...state.instanceTokens],
     schemaPath: [...state.schemaTokens[state.schemaTokens.length - 1]]
   });
+
+  if (state.errors.length === state.config.maxErrors) {
+    throw new MaxErrorsReachedError();
+  }
 }
