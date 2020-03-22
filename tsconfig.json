@@ -3,6 +3,7 @@
     "declaration": true,
     "strict": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "target": "es6",
     "rootDir": "src",
     "outDir": "lib"
