@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "10.x"
+          always-auth: true
       - run: yarn
       - run: yarn run test
       - run: yarn publish
