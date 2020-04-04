@@ -171,6 +171,10 @@ export function isValidSchema(schema: Schema, root?: Schema): boolean {
         return false;
       }
 
+      if (subSchema.nullable) {
+        return false;
+      }
+
       if (schema.discriminator in (subSchema.properties || {})) {
         return false;
       }
@@ -214,7 +218,7 @@ const VALID_FORMS = [
   // Values form
   [false, false, false, false, false, false, false, true, false, false],
   // Discriminator form
-  [false, false, false, false, false, false, false, false, true, true]
+  [false, false, false, false, false, false, false, false, true, true],
 ];
 
 // List of valid values that the "type" keyboard may take on.
@@ -229,7 +233,7 @@ const VALID_TYPES = [
   "int32",
   "uint32",
   "string",
-  "timestamp"
+  "timestamp",
 ];
 
 export function isSchema(data: unknown): data is Schema {
@@ -271,7 +275,7 @@ export function isSchema(data: unknown): data is Schema {
     additionalProperties !== undefined,
     values !== undefined,
     discriminator !== undefined,
-    mapping !== undefined
+    mapping !== undefined,
   ];
 
   let formOk = false;
@@ -334,7 +338,7 @@ export function isSchema(data: unknown): data is Schema {
       return false;
     }
 
-    if (!enum_.every(elem => typeof elem === "string")) {
+    if (!enum_.every((elem) => typeof elem === "string")) {
       return false;
     }
   }
