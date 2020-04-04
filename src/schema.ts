@@ -2,6 +2,7 @@ export type Schema =
   | SchemaFormEmpty
   | SchemaFormRef
   | SchemaFormType
+  | SchemaFormEnum
   | SchemaFormElements
   | SchemaFormProperties
   | SchemaFormValues
