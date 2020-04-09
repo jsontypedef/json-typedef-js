@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "es6",
+    "module": "commonjs",
     "rootDir": "src",
     "outDir": "lib"
   }
