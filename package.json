@@ -1,6 +1,6 @@
 {
   "name": "jtd",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A JavaScript / TypeScript / Node.js implementation of JSON Type Definition",
   "main": "lib/index.js",
   "files": [
