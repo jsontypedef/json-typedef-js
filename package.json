@@ -1,12 +1,12 @@
 {
   "name": "jtd",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A JavaScript / TypeScript / Node.js implementation of JSON Type Definition",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "repository": "https://github.com/jsontypedef/json-typedef-rust",
+  "repository": "https://github.com/jsontypedef/json-typedef-js",
   "author": "JSON Type Definition Contributors",
   "license": "MIT",
   "scripts": {
