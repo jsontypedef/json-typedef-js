@@ -129,11 +129,11 @@ console.log(validate(schema, {
 
 If you want to run `jtd` against a schema that you don't trust, then you should:
 
-1. Ensure the schema is well-formed, using `jtd.isValidSchema`.
-
-   If you're using TypeScript, you can use this function as a type guard -- if
-   it returns `true`, then TypeScript will let you treat the input as an
-   instance of `Schema`.
+1. Ensure the schema is well-formed, using `jtd.isSchema` and
+   `jtd.isValidSchema`. `isSchema` does basic "type" checking (and in
+   TypeScript, it acts as a type guard for the `Schema` type), while
+   `isValidSchema` validates things like making sure all `ref`s have
+   corresponding definitions.
 
 2. Call `jtd.validate` with the `maxDepth` option. JSON Typedef lets you write
    recursive schemas -- if you're evaluating against untrusted schemas, you
@@ -158,13 +158,13 @@ Here's an example of how you can use `jtd` to evaluate data against an untrusted
 schema:
 
 ```ts
-import { isValidSchema, Schema, validate } from "jtd";
+import { isSchema, isValidSchema, Schema, validate } from "jtd";
 
 // validateUntrusted returns true if `data` satisfies `schema`, and false if it
 // does not. Throws an error if `schema` is invalid, or if validation goes in an
 // infinite loop.
 function validateUntrusted(schema: unknown, data: unknown): boolean {
-  if (!isValidSchema(schema)) {
+  if (!isSchema(schema) || !isValidSchema(schema)) {
     throw new Error("invalid schema");
   }
 

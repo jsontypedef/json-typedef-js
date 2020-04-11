@@ -1,3 +1,20 @@
+/**
+ * Module schema provides code to safely handle JSON Typedef schemas.
+ *
+ * JSON Typedef schemas are represented in this module with {@link Schema}, and
+ * you can check if a JSON object is a correct schema by using {@link isSchema}
+ * and {@link isValidSchema}.
+ *
+ * @packageDocumentation
+ */
+
+/**
+ * Schema is a TypeScript representation of a correct JSON Typedef schema.
+ *
+ * The JSON Typedef specification allows schemas to take on one of eight forms.
+ * Each of those forms has its own type in this module; Schema is simply a union
+ * of each of those eight types.
+ */
 export type Schema =
   | SchemaFormEmpty
   | SchemaFormRef
@@ -8,16 +25,28 @@ export type Schema =
   | SchemaFormValues
   | SchemaFormDiscriminator;
 
+/**
+ * SchemaFormEmpty represents schemas of the empty form.
+ */
 export type SchemaFormEmpty = SharedFormProperties;
 
+/**
+ * SchemaFormRef represents schemas of the ref form.
+ */
 export type SchemaFormRef = SharedFormProperties & {
   ref: string;
 };
 
+/**
+ * SchemaFormType represents schemas of the type form.
+ */
 export type SchemaFormType = SharedFormProperties & {
   type: Type;
 };
 
+/**
+ * Type represents the legal values of the "type" keyword in JSON Typedef.
+ */
 export type Type =
   | "boolean"
   | "float32"
@@ -31,14 +60,23 @@ export type Type =
   | "string"
   | "timestamp";
 
+/**
+ * SchemaFormEnum represents schemas of the enum form.
+ */
 export type SchemaFormEnum = SharedFormProperties & {
   enum: string[];
 };
 
+/**
+ * SchemaFormElements represents schemas of the elements form.
+ */
 export type SchemaFormElements = SharedFormProperties & {
   elements: Schema;
 };
 
+/**
+ * SchemaFormProperties represents schemas of the properties form.
+ */
 export type SchemaFormProperties = SharedFormProperties &
   (
     | {
@@ -53,58 +91,128 @@ export type SchemaFormProperties = SharedFormProperties &
       }
   );
 
+/**
+ * SchemaFormValues represents schemas of the values form.
+ */
 export type SchemaFormValues = SharedFormProperties & {
   values: Schema;
 };
 
+/**
+ * SchemaFormDiscriminator represents schemas of the discriminator form.
+ */
 export type SchemaFormDiscriminator = SharedFormProperties & {
   discriminator: string;
   mapping: { [name: string]: Schema };
 };
 
+/**
+ * SharedFormProperties contains the properties shared among all schema forms.
+ */
 interface SharedFormProperties {
   definitions?: { [definition: string]: Schema };
   metadata?: { [name: string]: unknown };
   nullable?: boolean;
 }
 
+/**
+ * isEmptyForm checks whether some Schema is of the empty form.
+ *
+ * @param schema The schema to validate
+ */
 export function isEmptyForm(schema: Schema): schema is SchemaFormEmpty {
   const { definitions, nullable, metadata, ...rest } = schema;
   return Object.keys(rest).length === 0;
 }
 
+/**
+ * isRefForm checks whether some Schema is of the ref form.
+ *
+ * @param schema The schema to validate
+ */
 export function isRefForm(schema: Schema): schema is SchemaFormRef {
   return "ref" in schema;
 }
 
+/**
+ * isTypeForm checks whether some Schema is of the type form.
+ *
+ * @param schema The schema to validate
+ */
 export function isTypeForm(schema: Schema): schema is SchemaFormType {
   return "type" in schema;
 }
 
+/**
+ * isEnumForm checks whether some Schema is of the enum form.
+ *
+ * @param schema The schema to validate
+ */
 export function isEnumForm(schema: Schema): schema is SchemaFormEnum {
   return "enum" in schema;
 }
 
+/**
+ * isElementsForm checks whether some Schema is of the elements form.
+ *
+ * @param schema The schema to validate
+ */
 export function isElementsForm(schema: Schema): schema is SchemaFormElements {
   return "elements" in schema;
 }
 
+/**
+ * isPropertiesForm checks whether some Schema is of the properties form.
+ *
+ * @param schema The schema to validate
+ */
 export function isPropertiesForm(
   schema: Schema
 ): schema is SchemaFormProperties {
   return "properties" in schema || "optionalProperties" in schema;
 }
 
+/**
+ * isPropertiesForm checks whether some Schema is of the values form.
+ *
+ * @param schema The schema to validate
+ */
 export function isValuesForm(schema: Schema): schema is SchemaFormValues {
   return "values" in schema;
 }
 
+/**
+ * isDiscriminatorForm checks whether some Schema is of the values form.
+ *
+ * @param schema The schema to validate
+ */
 export function isDiscriminatorForm(
   schema: Schema
 ): schema is SchemaFormDiscriminator {
   return "discriminator" in schema;
 }
 
+/**
+ * isValidSchema checks whether some Schema is correct, according to the syntax
+ * rules of JSON Typedef.
+ *
+ * In particular, isValidSchema verifies that:
+ *
+ * 1. The schema does not have any non-root definitions,
+ * 2. All references point to actually-existing definitions,
+ * 3. All enums are non-empty, and do not contain duplicates,
+ * 4. The `properties` and `optionalProperties` of a schema never share
+ *    properties,
+ * 5. All schemas in `mapping` are of the properties form,
+ * 6. Schemas in `mapping` never re-specify the `discriminator` property
+ *
+ * If an object returned from `JSON.parse` passes both {@link isSchema} and
+ * {@link isValidSchema}, then it is a correct JSON Typedef schema.
+ *
+ * @param schema The schema to validate
+ * @param root The schema to consider as the "root" schema. If undefined,
+ * `schema` will be used as the root. This is usually what you want to do.
+ */
 export function isValidSchema(schema: Schema, root?: Schema): boolean {
   if (root === undefined) {
     root = schema;
@@ -237,6 +345,19 @@ const VALID_TYPES = [
   "timestamp",
 ];
 
+/**
+ * isSchema checks whether some piece of JSON data has the shape of a JSON
+ * Typedef Schema.
+ *
+ * This function only looks at the "shape" of data: it just makes sure all
+ * property names and types are valid, and that the data takes on one of the
+ * eight JSON Typedef forms.
+ *
+ * If an object returned from `JSON.parse` passes both {@link isSchema} and
+ * {@link isValidSchema}, then it is a correct JSON Typedef schema.
+ *
+ * @param data The data to check
+ */
 export function isSchema(data: unknown): data is Schema {
   if (typeof data !== "object" || Array.isArray(data) || data === null) {
     return false;
