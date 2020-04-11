@@ -182,10 +182,11 @@
 				</a>
 				<p>If you want to run <code>jtd</code> against a schema that you don&#39;t trust, then you should:</p>
 				<ol>
-					<li><p>Ensure the schema is well-formed, using <code>jtd.isValidSchema</code>.</p>
-						<p>If you&#39;re using TypeScript, you can use this function as a type guard -- if
-							it returns <code>true</code>, then TypeScript will let you treat the input as an
-						instance of <code>Schema</code>.</p>
+					<li><p>Ensure the schema is well-formed, using <code>jtd.isSchema</code> and
+							<code>jtd.isValidSchema</code>. <code>isSchema</code> does basic &quot;type&quot; checking (and in
+							TypeScript, it acts as a type guard for the <code>Schema</code> type), while
+							<code>isValidSchema</code> validates things like making sure all <code>ref</code>s have
+						corresponding definitions.</p>
 					</li>
 					<li><p>Call <code>jtd.validate</code> with the <code>maxDepth</code> option. JSON Typedef lets you write
 							recursive schemas -- if you&#39;re evaluating against untrusted schemas, you
@@ -205,13 +206,13 @@
 				</ol>
 				<p>Here&#39;s an example of how you can use <code>jtd</code> to evaluate data against an untrusted
 				schema:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { isValidSchema, Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">"jtd"</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { isSchema, isValidSchema, Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">"jtd"</span>;
 
 <span class="hljs-comment">// validateUntrusted returns true if `data` satisfies `schema`, and false if it</span>
 <span class="hljs-comment">// does not. Throws an error if `schema` is invalid, or if validation goes in an</span>
 <span class="hljs-comment">// infinite loop.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateUntrusted</span>(<span class="hljs-params">schema: unknown, data: unknown</span>): <span class="hljs-title">boolean</span> </span>{
-  <span class="hljs-keyword">if</span> (!isValidSchema(schema)) {
+  <span class="hljs-keyword">if</span> (!isSchema(schema) || !isValidSchema(schema)) {
     <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"invalid schema"</span>);
   }
 

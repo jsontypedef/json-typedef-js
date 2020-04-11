@@ -69,6 +69,20 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ValidationError represents a JSON Typedef validation error.</p>
+					</div>
+					<p>In terms of the formal JSON Typedef specification, ValidationError
+						corresponds to a JSON Typedef error &quot;indicator&quot;. ValidationError is <em>not</em> a
+					subclass of Error. It is just a plain old TypeScript interface.</p>
+					<p>Both elements of ValidationError are meant to be used as the path segments of
+						an <a href="https://tools.ietf.org/html/rfc6901">RFC6901 JSON Pointer</a>. This package
+						does not provide an implementation of JSON Pointers for you, and you may
+					choose to not use JSON Pointers at all.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -99,9 +113,15 @@
 					<div class="tsd-signature tsd-kind-icon">instance<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L23">src/validate.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L77">src/validate.ts:77</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>instancePath is the path to a part of the instance, or &quot;input&quot;, that was
+							rejected.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="schemapath" class="tsd-anchor"></a>
@@ -109,9 +129,14 @@
 					<div class="tsd-signature tsd-kind-icon">schema<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L24">src/validate.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L82">src/validate.ts:82</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>schemaPath is the path to the part of the schema that rejected the input.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

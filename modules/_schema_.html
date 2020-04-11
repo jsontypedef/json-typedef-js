@@ -66,6 +66,16 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Module schema provides code to safely handle JSON Typedef schemas.</p>
+					</div>
+					<p>JSON Typedef schemas are represented in this module with <a href="_schema_.html#schema">Schema</a>, and
+						you can check if a JSON object is a correct schema by using <a href="_schema_.html#isschema">isSchema</a>
+					and <a href="_schema_.html#isvalidschema">isValidSchema</a>.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -124,9 +134,17 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<span class="tsd-signature-symbol">:</span> <a href="_schema_.html#schemaformempty" class="tsd-signature-type">SchemaFormEmpty</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformref" class="tsd-signature-type">SchemaFormRef</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformtype" class="tsd-signature-type">SchemaFormType</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformenum" class="tsd-signature-type">SchemaFormEnum</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformelements" class="tsd-signature-type">SchemaFormElements</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformproperties" class="tsd-signature-type">SchemaFormProperties</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformvalues" class="tsd-signature-type">SchemaFormValues</a><span class="tsd-signature-symbol"> | </span><a href="_schema_.html#schemaformdiscriminator" class="tsd-signature-type">SchemaFormDiscriminator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L1">src/schema.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L18">src/schema.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Schema is a TypeScript representation of a correct JSON Typedef schema.</p>
+						</div>
+						<p>The JSON Typedef specification allows schemas to take on one of eight forms.
+							Each of those forms has its own type in this module; Schema is simply a union
+						of each of those eight types.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformdiscriminator" class="tsd-anchor"></a>
@@ -134,9 +152,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Discriminator<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>discriminator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>mapping<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L60">src/schema.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L104">src/schema.ts:104</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormDiscriminator represents schemas of the discriminator form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformelements" class="tsd-anchor"></a>
@@ -144,9 +167,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Elements<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>elements<span class="tsd-signature-symbol">: </span><a href="_schema_.html#schema" class="tsd-signature-type">Schema</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L38">src/schema.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L73">src/schema.ts:73</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormElements represents schemas of the elements form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformempty" class="tsd-anchor"></a>
@@ -154,9 +182,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Empty<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L11">src/schema.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L31">src/schema.ts:31</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormEmpty represents schemas of the empty form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformenum" class="tsd-anchor"></a>
@@ -164,9 +197,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Enum<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>enum<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L34">src/schema.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L66">src/schema.ts:66</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormEnum represents schemas of the enum form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformproperties" class="tsd-anchor"></a>
@@ -174,9 +212,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Properties<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>additionalProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>optionalProperties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>properties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>additionalProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>optionalProperties<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L42">src/schema.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L80">src/schema.ts:80</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormProperties represents schemas of the properties form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformref" class="tsd-anchor"></a>
@@ -184,9 +227,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Ref<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>ref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L13">src/schema.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L36">src/schema.ts:36</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormRef represents schemas of the ref form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformtype" class="tsd-anchor"></a>
@@ -194,9 +242,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><a href="_schema_.html#type" class="tsd-signature-type">Type</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L17">src/schema.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L43">src/schema.ts:43</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormType represents schemas of the type form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="schemaformvalues" class="tsd-anchor"></a>
@@ -204,9 +257,14 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Form<wbr>Values<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_schema_.sharedformproperties.html" class="tsd-signature-type">SharedFormProperties</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>values<span class="tsd-signature-symbol">: </span><a href="_schema_.html#schema" class="tsd-signature-type">Schema</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L56">src/schema.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L97">src/schema.ts:97</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SchemaFormValues represents schemas of the values form.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="type" class="tsd-anchor"></a>
@@ -214,9 +272,14 @@
 					<div class="tsd-signature tsd-kind-icon">Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"boolean"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"float32"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"float64"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"int8"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"uint8"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"int16"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"uint16"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"int32"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"uint32"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"string"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"timestamp"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L21">src/schema.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L50">src/schema.ts:50</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type represents the legal values of the &quot;type&quot; keyword in JSON Typedef.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -227,7 +290,7 @@
 					<div class="tsd-signature tsd-kind-icon">VALID_<wbr>FORMS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [// Empty form[false, false, false, false, false, false, false, false, false, false],// Ref form[true, false, false, false, false, false, false, false, false, false],// Type form[false, true, false, false, false, false, false, false, false, false],// Enum form[false, false, true, false, false, false, false, false, false, false],// Elements form[false, false, false, true, false, false, false, false, false, false],// Properties form -- properties or optional properties or both, and never// additional properties on its own[false, false, false, false, true, false, false, false, false, false],[false, false, false, false, false, true, false, false, false, false],[false, false, false, false, true, true, false, false, false, false],[false, false, false, false, true, false, true, false, false, false],[false, false, false, false, false, true, true, false, false, false],[false, false, false, false, true, true, true, false, false, false],// Values form[false, false, false, false, false, false, false, true, false, false],// Discriminator form[false, false, false, false, false, false, false, false, true, true],]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L200">src/schema.ts:200</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L308">src/schema.ts:308</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -237,7 +300,7 @@
 					<div class="tsd-signature tsd-kind-icon">VALID_<wbr>TYPES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;boolean&quot;,&quot;float32&quot;,&quot;float64&quot;,&quot;int8&quot;,&quot;uint8&quot;,&quot;int16&quot;,&quot;uint16&quot;,&quot;int32&quot;,&quot;uint32&quot;,&quot;string&quot;,&quot;timestamp&quot;,]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L226">src/schema.ts:226</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L334">src/schema.ts:334</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -254,13 +317,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L102">src/schema.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L189">src/schema.ts:189</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isDiscriminatorForm checks whether some Schema is of the values form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormDiscriminator</span></h4>
@@ -277,13 +348,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L88">src/schema.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L160">src/schema.ts:160</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isElementsForm checks whether some Schema is of the elements form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormElements</span></h4>
@@ -300,13 +379,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L71">src/schema.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L123">src/schema.ts:123</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isEmptyForm checks whether some Schema is of the empty form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormEmpty</span></h4>
@@ -323,13 +410,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L84">src/schema.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L151">src/schema.ts:151</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isEnumForm checks whether some Schema is of the enum form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormEnum</span></h4>
@@ -346,13 +441,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L92">src/schema.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L169">src/schema.ts:169</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isPropertiesForm checks whether some Schema is of the properties form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormProperties</span></h4>
@@ -369,13 +472,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L76">src/schema.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L133">src/schema.ts:133</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isRefForm checks whether some Schema is of the ref form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormRef</span></h4>
@@ -392,13 +503,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L240">src/schema.ts:240</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L361">src/schema.ts:361</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isSchema checks whether some piece of JSON data has the shape of a JSON
+									Typedef Schema.</p>
+								</div>
+								<p>This function only looks at the &quot;shape&quot; of data: it just makes sure all
+									property names and types are valid, and that the data takes on one of the
+								eight JSON Typedef forms.</p>
+								<p>If an object returned from <code>JSON.parse</code> passes both <a href="_schema_.html#isschema">isSchema</a> and
+								<a href="_schema_.html#isvalidschema">isValidSchema</a>, then it is a correct JSON Typedef schema.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>data: <span class="tsd-signature-type">unknown</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The data to check</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">data</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">Schema</span></h4>
@@ -415,13 +540,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L80">src/schema.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L142">src/schema.ts:142</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isTypeForm checks whether some Schema is of the type form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormType</span></h4>
@@ -438,16 +571,41 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L108">src/schema.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L216">src/schema.ts:216</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isValidSchema checks whether some Schema is correct, according to the syntax
+									rules of JSON Typedef.</p>
+								</div>
+								<p>In particular, isValidSchema verifies that:</p>
+								<ol>
+									<li>The schema does not have any non-root definitions,</li>
+									<li>All references point to actually-existing definitions,</li>
+									<li>All enums are non-empty, and do not contain duplicates,</li>
+									<li>The <code>properties</code> and <code>optionalProperties</code> of a schema never share
+									properties,</li>
+									<li>All schemas in <code>mapping</code> are of the properties form,</li>
+									<li>Schemas in <code>mapping</code> never re-specify the <code>discriminator</code> property</li>
+								</ol>
+								<p>If an object returned from <code>JSON.parse</code> passes both <a href="_schema_.html#isschema">isSchema</a> and
+								<a href="_schema_.html#isvalidschema">isValidSchema</a>, then it is a correct JSON Typedef schema.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> root: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to consider as the &quot;root&quot; schema. If undefined,
+										<code>schema</code> will be used as the root. This is usually what you want to do.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -464,13 +622,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/schema.ts#L98">src/schema.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/schema.ts#L180">src/schema.ts:180</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>isPropertiesForm checks whether some Schema is of the values form.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">schema</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">SchemaFormValues</span></h4>

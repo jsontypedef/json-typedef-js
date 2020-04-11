@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ValidationConfig represents options you can pass to <a href="../modules/_validate_.html#validate">validate</a>.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -99,9 +106,19 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Depth<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L14">src/validate.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L37">src/validate.ts:37</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>maxDepth is the maximum number of <code>ref</code>s to recursively follow before
+							<a href="../modules/_validate_.html#validate">validate</a> throws <a href="../classes/_validate_.maxdepthexceedederror.html">MaxDepthExceededError</a>.</p>
+						</div>
+						<p>If maxDepth is zero, then no maximum depth will be enforced.
+							<a href="../modules/_validate_.html#validate">validate</a> will recursively follow <code>ref</code>s indefinitely, potentially
+						causing a stack overflow.</p>
+						<p>By default, maxDepth is zero.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="maxerrors" class="tsd-anchor"></a>
@@ -109,9 +126,18 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L15">src/validate.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L49">src/validate.ts:49</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>maxErrors is the maximum number of errors to return from <a href="../modules/_validate_.html#validate">validate</a>.</p>
+						</div>
+						<p>If maxErrors is positive, <a href="../modules/_validate_.html#validate">validate</a> may return fewer errors than
+						maxErrors, but it will never return more than maxErrors.</p>
+						<p>If maxErrors is zero, <a href="../modules/_validate_.html#validate">validate</a> will return all validation errors.</p>
+						<p>By default, maxErrors is zero.</p>
+					</div>
 				</section>
 			</section>
 		</div>

@@ -66,6 +66,16 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Module validate provides an implementation of JSON Typedef validation.</p>
+					</div>
+					<p>The most important function in this module is <a href="_validate_.html#validate">validate</a>, which returns
+						an array of <a href="../interfaces/_validate_.validationerror.html">ValidationError</a>. You can configure <a href="_validate_.html#validate">validate</a> by
+					passing it a <a href="../interfaces/_validate_.validationconfig.html">ValidationConfig</a>.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -113,7 +123,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L320">src/validate.ts:320</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L408">src/validate.ts:408</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L328">src/validate.ts:328</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L416">src/validate.ts:416</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -159,7 +169,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L332">src/validate.ts:332</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L420">src/validate.ts:420</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -182,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L316">src/validate.ts:316</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L404">src/validate.ts:404</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -208,7 +218,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L324">src/validate.ts:324</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L412">src/validate.ts:412</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -234,19 +244,50 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L27">src/validate.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L115">src/validate.ts:115</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>validate performs JSON Typedef validation of an instance (or &quot;input&quot;) against
+									a JSON Typedef schema, returning a standardized set of errors.</p>
+								</div>
+								<p>This function may throw <a href="../classes/_validate_.maxdepthexceedederror.html">MaxDepthExceededError</a> if you have configured
+									a <a href="../interfaces/_validate_.validationconfig.html#maxdepth">ValidationConfig.maxDepth</a>. If you do not configure such a maxDepth,
+									then this function may cause a stack overflow. That&#39;s because of
+								circularly-defined schemas like this one:</p>
+								<pre><code class="language-json">{
+  <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"loop"</span>,
+  <span class="hljs-attr">"definitions"</span>: {
+    <span class="hljs-attr">"loop"</span>: { <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"loop"</span> }
+  }
+}</code></pre>
+								<p>If your schema is not circularly defined like this, then there is no risk for
+								validate to overflow the stack.</p>
+								<p>If you are only interested in a certain number of error messages, consider
+									using <a href="../interfaces/_validate_.validationconfig.html#maxerrors">ValidationConfig.maxErrors</a> to get better performance. For
+									instance, if all you care about is whether the input is OK or if it has
+								errors, you may want to set maxErrors to 1.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>schema: <a href="_schema_.html#schema" class="tsd-signature-type">Schema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema to validate data against</p>
+									</div>
 								</li>
 								<li>
 									<h5>instance: <span class="tsd-signature-type">unknown</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The &quot;input&quot; to validate</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> config: <a href="../interfaces/_validate_.validationconfig.html" class="tsd-signature-type">ValidationConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Validation options. Optional.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_validate_.validationerror.html" class="tsd-signature-type">ValidationError</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -263,7 +304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L300">src/validate.ts:300</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L388">src/validate.ts:388</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -295,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/d1510e2/src/validate.ts#L63">src/validate.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/jsontypedef/json-typedef-js/blob/5263dca/src/validate.ts#L151">src/validate.ts:151</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
