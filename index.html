@@ -68,21 +68,16 @@
 					<h1>jtd: JSON Validation for JavaScript</h1>
 				</a>
 				<p><a href="https://www.npmjs.com/package/jtd"><img src="https://img.shields.io/npm/v/jtd" alt="npm"></a></p>
-				<blockquote>
-					<p>This package implements JSON Typedef <em>validation</em> for JavaScript and
-						TypeScript. If you&#39;re trying to do JSON Typedef <em>code generation</em>, see
-						<a href="https://jsontypedef.com/docs/javascript/code-generation">&quot;Generating TypeScript from JSON Typedef Schemas&quot;</a> in the
-					JSON Typedef docs.</p>
-				</blockquote>
-				<p><code>jtd</code> is a JavaScript / TypeScript implementation of <a href="https://jsontypedef.com">JSON Type
-					Definition</a>, a schema language for JSON. It works in Node.js and web
-				browsers alike. <code>jtd</code> primarily gives you two things:</p>
-				<ol>
-					<li>Validating input data against JSON Typedef schemas.</li>
-					<li>A TypeScript representation of JSON Typedef schemas.</li>
-				</ol>
-				<p>With this package, you can add JSON Typedef-powered validation to your
-				application, or you can build your own tooling on top of JSON Type Definition.</p>
+				<p><a href="https://jsontypedef.com">JSON Type Definition</a>, aka <a href="https://tools.ietf.org/html/rfc8927">RFC
+					8927</a>, is an easy-to-learn, standardized
+					way to define a schema for JSON data. You can use JSON Typedef to portably
+					validate data across programming languages, create dummy data, generate code,
+				and more.</p>
+				<p>This <code>jtd</code> package is a JavaScript / TypeScript implementation of JSON Type
+					Definition. It lets you validate input data against JSON Type Definition
+				schemas. <code>jtd</code> works in Node.js and web browsers.</p>
+				<p>If you&#39;re looking to generate code from schemas, check out <a href="https://jsontypedef.com/docs/typescript-codegen/">&quot;Generating
+				TypeScript from JSON Typedef schemas&quot;</a> in the JSON Typedef docs.</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
@@ -99,29 +94,23 @@
 				in combination with JavaScript in particular, see:</p>
 				<ul>
 					<li><a href="https://jsontypedef.com">The JSON Typedef Website</a></li>
-					<li><a href="https://jsontypedef.com/docs/javascript/validation">&quot;Validating JSON in JavaScript with JSON Typedef&quot;</a></li>
-					<li><a href="https://jsontypedef.com/docs/javascript/code-generation">&quot;Generating TypeScript from JSON Typedef Schemas&quot;</a></li>
+					<li><a href="https://jsontypedef.com/docs/typescript-codegen/">&quot;Generating TypeScript from JSON Typedef Schemas&quot;</a></li>
 				</ul>
 				<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
 					<h2>Basic Usage</h2>
 				</a>
-				<blockquote>
-					<p>For a more detailed tutorial and guidance on how to integrate <code>jtd</code> in your
-						application, see <a href="https://jsontypedef.com/docs/javascript/validation">&quot;Validating JSON in JavaScript with JSON
-					Typedef&quot;</a> in the JSON Typedef docs.</p>
-				</blockquote>
 				<p>Here&#39;s an example of how you can use this package to validate JSON data against
 				a JSON Typedef schema:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">"jtd"</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;jtd&quot;</span>;
 
-<span class="hljs-comment">// You can leave out the "as Schema" part at the end if you're using JavaScript</span>
+<span class="hljs-comment">// You can leave out the &quot;as Schema&quot; part at the end if you&#x27;re using JavaScript</span>
 <span class="hljs-comment">// and not TypeScript.</span>
 <span class="hljs-keyword">const</span> schema = {
-  properties: {
-    name: { <span class="hljs-keyword">type</span>: <span class="hljs-string">"string"</span> },
-    age: { <span class="hljs-keyword">type</span>: <span class="hljs-string">"uint32"</span> },
-    phones: {
-      elements: { <span class="hljs-keyword">type</span>: <span class="hljs-string">"string"</span> }
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">name</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;string&quot;</span> },
+    <span class="hljs-attr">age</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;uint32&quot;</span> },
+    <span class="hljs-attr">phones</span>: {
+      <span class="hljs-attr">elements</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;string&quot;</span> }
     }
   }
 } <span class="hljs-keyword">as</span> Schema;
@@ -131,35 +120,35 @@
 
 <span class="hljs-comment">// Outputs: []</span>
 <span class="hljs-built_in">console</span>.log(validate(schema, {
-  name: <span class="hljs-string">"John Doe"</span>,
-  age: <span class="hljs-number">43</span>,
-  phones: [<span class="hljs-string">"+44 1234567"</span>, <span class="hljs-string">"+44 2345678"</span>],
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John Doe&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">43</span>,
+  <span class="hljs-attr">phones</span>: [<span class="hljs-string">&quot;+44 1234567&quot;</span>, <span class="hljs-string">&quot;+44 2345678&quot;</span>],
 }))
 
 <span class="hljs-comment">// This next input has three problems with it:</span>
 <span class="hljs-comment">//</span>
-<span class="hljs-comment">// 1. It's missing "name", which is a required property.</span>
-<span class="hljs-comment">// 2. "age" is a string, but it should be an integer.</span>
-<span class="hljs-comment">// 3. "phones[1]" is a number, but it should be a string.</span>
+<span class="hljs-comment">// 1. It&#x27;s missing &quot;name&quot;, which is a required property.</span>
+<span class="hljs-comment">// 2. &quot;age&quot; is a string, but it should be an integer.</span>
+<span class="hljs-comment">// 3. &quot;phones[1]&quot; is a number, but it should be a string.</span>
 <span class="hljs-comment">//</span>
 <span class="hljs-comment">// Each of those errors corresponds to one of the errors returned by validate.</span>
 
 <span class="hljs-comment">// Outputs:</span>
 <span class="hljs-comment">//</span>
 <span class="hljs-comment">// [</span>
-<span class="hljs-comment">//   { instancePath: [], schemaPath: [ 'properties', 'name' ] },</span>
+<span class="hljs-comment">//   { instancePath: [], schemaPath: [ &#x27;properties&#x27;, &#x27;name&#x27; ] },</span>
 <span class="hljs-comment">//   {</span>
-<span class="hljs-comment">//     instancePath: [ 'age' ],</span>
-<span class="hljs-comment">//     schemaPath: [ 'properties', 'age', 'type' ]</span>
+<span class="hljs-comment">//     instancePath: [ &#x27;age&#x27; ],</span>
+<span class="hljs-comment">//     schemaPath: [ &#x27;properties&#x27;, &#x27;age&#x27;, &#x27;type&#x27; ]</span>
 <span class="hljs-comment">//   },</span>
 <span class="hljs-comment">//   {</span>
-<span class="hljs-comment">//     instancePath: [ 'phones', '1' ],</span>
-<span class="hljs-comment">//     schemaPath: [ 'properties', 'phones', 'elements', 'type' ]</span>
+<span class="hljs-comment">//     instancePath: [ &#x27;phones&#x27;, &#x27;1&#x27; ],</span>
+<span class="hljs-comment">//     schemaPath: [ &#x27;properties&#x27;, &#x27;phones&#x27;, &#x27;elements&#x27;, &#x27;type&#x27; ]</span>
 <span class="hljs-comment">//   }</span>
 <span class="hljs-comment">// ]</span>
 <span class="hljs-built_in">console</span>.log(validate(schema, {
-  age: <span class="hljs-string">"43"</span>,
-  phones: [<span class="hljs-string">"+44 1234567"</span>, <span class="hljs-number">442345678</span>],
+  <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;43&quot;</span>,
+  <span class="hljs-attr">phones</span>: [<span class="hljs-string">&quot;+44 1234567&quot;</span>, <span class="hljs-number">442345678</span>],
 }))</code></pre>
 				<a href="#advanced-usage-limiting-errors-returned" id="advanced-usage-limiting-errors-returned" style="color: inherit; text-decoration: none;">
 					<h2>Advanced Usage: Limiting Errors Returned</h2>
@@ -172,11 +161,11 @@
 				get:</p>
 				<pre><code class="language-ts"><span class="hljs-comment">// Outputs:</span>
 <span class="hljs-comment">//</span>
-<span class="hljs-comment">// [ { instancePath: [], schemaPath: [ 'properties', 'name' ] } ]</span>
+<span class="hljs-comment">// [ { instancePath: [], schemaPath: [ &#x27;properties&#x27;, &#x27;name&#x27; ] } ]</span>
 <span class="hljs-built_in">console</span>.log(validate(schema, {
-  age: <span class="hljs-string">"43"</span>,
-  phones: [<span class="hljs-string">"+44 1234567"</span>, <span class="hljs-number">442345678</span>],
-}, { maxErrors: <span class="hljs-number">1</span> }))</code></pre>
+  <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;43&quot;</span>,
+  <span class="hljs-attr">phones</span>: [<span class="hljs-string">&quot;+44 1234567&quot;</span>, <span class="hljs-number">442345678</span>],
+}, { <span class="hljs-attr">maxErrors</span>: <span class="hljs-number">1</span> }))</code></pre>
 				<a href="#advanced-usage-handling-untrusted-schemas" id="advanced-usage-handling-untrusted-schemas" style="color: inherit; text-decoration: none;">
 					<h2>Advanced Usage: Handling Untrusted Schemas</h2>
 				</a>
@@ -193,10 +182,10 @@
 							might go into an infinite loop when evaluating against a malicious input,
 						such as this one:</p>
 						<pre><code class="language-json">{
-  <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"loop"</span>,
-  <span class="hljs-attr">"definitions"</span>: {
-    <span class="hljs-attr">"loop"</span>: {
-      <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"loop"</span>
+  <span class="hljs-attr">&quot;ref&quot;</span>: <span class="hljs-string">&quot;loop&quot;</span>,
+  <span class="hljs-attr">&quot;definitions&quot;</span>: {
+    <span class="hljs-attr">&quot;loop&quot;</span>: {
+      <span class="hljs-attr">&quot;ref&quot;</span>: <span class="hljs-string">&quot;loop&quot;</span>
     }
   }
 }</code></pre>
@@ -206,37 +195,37 @@
 				</ol>
 				<p>Here&#39;s an example of how you can use <code>jtd</code> to evaluate data against an untrusted
 				schema:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { isSchema, isValidSchema, Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">"jtd"</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { isSchema, isValidSchema, Schema, validate } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;jtd&quot;</span>;
 
 <span class="hljs-comment">// validateUntrusted returns true if `data` satisfies `schema`, and false if it</span>
 <span class="hljs-comment">// does not. Throws an error if `schema` is invalid, or if validation goes in an</span>
 <span class="hljs-comment">// infinite loop.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateUntrusted</span>(<span class="hljs-params">schema: unknown, data: unknown</span>): <span class="hljs-title">boolean</span> </span>{
   <span class="hljs-keyword">if</span> (!isSchema(schema) || !isValidSchema(schema)) {
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"invalid schema"</span>);
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;invalid schema&quot;</span>);
   }
 
   <span class="hljs-comment">// You should tune maxDepth to be high enough that most legitimate schemas</span>
   <span class="hljs-comment">// evaluate without errors, but low enough that an attacker cannot cause a</span>
   <span class="hljs-comment">// denial of service attack.</span>
-  <span class="hljs-keyword">return</span> validate(schema, data, { maxDepth: <span class="hljs-number">32</span> }).length === <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">return</span> validate(schema, data, { <span class="hljs-attr">maxDepth</span>: <span class="hljs-number">32</span> }).length === <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-comment">// Returns true</span>
-validateUntrusted({ <span class="hljs-keyword">type</span>: <span class="hljs-string">"string"</span> }, <span class="hljs-string">"foo"</span>);
+validateUntrusted({ <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;string&quot;</span> }, <span class="hljs-string">&quot;foo&quot;</span>);
 
 <span class="hljs-comment">// Returns false</span>
-validateUntrusted({ <span class="hljs-keyword">type</span>: <span class="hljs-string">"string"</span> }, <span class="hljs-literal">null</span>);
+validateUntrusted({ <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;string&quot;</span> }, <span class="hljs-literal">null</span>);
 
-<span class="hljs-comment">// Throws "invalid schema"</span>
-validateUntrusted({ <span class="hljs-keyword">type</span>: <span class="hljs-string">"nonsense"</span> }, <span class="hljs-literal">null</span>);
+<span class="hljs-comment">// Throws &quot;invalid schema&quot;</span>
+validateUntrusted({ <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;nonsense&quot;</span> }, <span class="hljs-literal">null</span>);
 
 <span class="hljs-comment">// Throws an instance of jtd.MaxDepthExceededError</span>
 validateUntrusted({
-  <span class="hljs-string">"ref"</span>: <span class="hljs-string">"loop"</span>,
-  <span class="hljs-string">"definitions"</span>: {
-    <span class="hljs-string">"loop"</span>: {
-      <span class="hljs-string">"ref"</span>: <span class="hljs-string">"loop"</span>
+  <span class="hljs-string">&quot;ref&quot;</span>: <span class="hljs-string">&quot;loop&quot;</span>,
+  <span class="hljs-string">&quot;definitions&quot;</span>: {
+    <span class="hljs-string">&quot;loop&quot;</span>: {
+      <span class="hljs-string">&quot;ref&quot;</span>: <span class="hljs-string">&quot;loop&quot;</span>
     }
   }
 }, <span class="hljs-literal">null</span>);</code></pre>
@@ -289,6 +278,5 @@ validateUntrusted({
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
