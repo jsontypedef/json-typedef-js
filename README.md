@@ -2,20 +2,18 @@
 
 [![npm](https://img.shields.io/npm/v/jtd)](https://www.npmjs.com/package/jtd)
 
-> This package implements JSON Typedef *validation* for JavaScript and
-> TypeScript. If you're trying to do JSON Typedef *code generation*, see
-> ["Generating TypeScript from JSON Typedef Schemas"][jtd-ts-codegen] in the
-> JSON Typedef docs.
+[JSON Type Definition](https://jsontypedef.com), aka [RFC
+8927](https://tools.ietf.org/html/rfc8927), is an easy-to-learn, standardized
+way to define a schema for JSON data. You can use JSON Typedef to portably
+validate data across programming languages, create dummy data, generate code,
+and more.
 
-`jtd` is a JavaScript / TypeScript implementation of [JSON Type
-Definition][jtd], a schema language for JSON. It works in Node.js and web
-browsers alike. `jtd` primarily gives you two things:
+This `jtd` package is a JavaScript / TypeScript implementation of JSON Type
+Definition. It lets you validate input data against JSON Type Definition
+schemas. `jtd` works in Node.js and web browsers.
 
-1. Validating input data against JSON Typedef schemas.
-2. A TypeScript representation of JSON Typedef schemas.
-
-With this package, you can add JSON Typedef-powered validation to your
-application, or you can build your own tooling on top of JSON Type Definition.
+If you're looking to generate code from schemas, check out ["Generating
+TypeScript from JSON Typedef schemas"][jtd-ts-codegen] in the JSON Typedef docs.
 
 ## Installation
 
@@ -41,14 +39,9 @@ For more high-level documentation about JSON Typedef in general, or JSON Typedef
 in combination with JavaScript in particular, see:
 
 * [The JSON Typedef Website][jtd]
-* ["Validating JSON in JavaScript with JSON Typedef"][jtd-js-validation]
 * ["Generating TypeScript from JSON Typedef Schemas"][jtd-ts-codegen]
 
 ## Basic Usage
-
-> For a more detailed tutorial and guidance on how to integrate `jtd` in your
-> application, see ["Validating JSON in JavaScript with JSON
-> Typedef"][jtd-js-validation] in the JSON Typedef docs.
 
 Here's an example of how you can use this package to validate JSON data against
 a JSON Typedef schema:
@@ -195,5 +188,4 @@ validateUntrusted({
 ```
 
 [jtd]: https://jsontypedef.com
-[jtd-ts-codegen]: https://jsontypedef.com/docs/javascript/code-generation
-[jtd-js-validation]: https://jsontypedef.com/docs/javascript/validation
+[jtd-ts-codegen]: https://jsontypedef.com/docs/typescript-codegen/
