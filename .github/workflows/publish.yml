@@ -17,14 +17,12 @@ jobs:
         with:
           node-version: "10.x"
           always-auth: true
-      - run: yarn
-      - run: yarn run test
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > ~/.npmrc
-      - run: yarn run build
-      - run: yarn publish
+      - run: npm ci
+      - run: npm run test
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-      - run: yarn run typedoc
+      - run: npx typedoc
       - run: touch docs/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
