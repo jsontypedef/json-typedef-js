@@ -8,7 +8,7 @@
  * @packageDocumentation
  */
 
-import moment from "moment";
+import isRFC3339 from "./rfc3339";
 import {
   Schema,
   isRefForm,
@@ -210,16 +210,7 @@ function validateWithState(
         if (typeof instance !== "string") {
           pushError(state);
         } else {
-          // ISO 8601 is unfortunately not quite the same thing as RFC 3339.
-          // However, at the time of writing no adequate alternative,
-          // widely-used library for parsing RFC3339 timestamps exists.
-          //
-          // Notably, moment does not support two of the examples given in
-          // RFC 3339 with "60" in the seconds place. These timestamps arise
-          // due to leap seconds. See:
-          //
-          // https://tools.ietf.org/html/rfc3339#section-5.8
-          if (!moment(instance, moment.ISO_8601).isValid()) {
+          if (!isRFC3339(instance)) {
             pushError(state);
           }
         }
